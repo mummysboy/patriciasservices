@@ -421,7 +421,7 @@
     <div id="qmSuccess" class="qm-success" hidden>
       <div class="big">🌺</div>
       <h3>Mahalo!</h3>
-      <p>Your request is ready in your email app — just hit send and we'll reply with a quote the same day. Prefer to text? <a href="sms:+18084762343" style="color:var(--ocean-deep);font-weight:600">Message us here.</a></p>
+      <p id="qmSuccessMsg">Your text is ready — just tap Send and it'll reach us at (808) 476-2343.</p>
     </div>
   </div>
 </div>
@@ -475,23 +475,39 @@
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
-  // Submit: compose an email to the business with all the details.
-  // To collect leads automatically (no email app), replace the mailto block
-  // below with a fetch() POST to a Formspree/Web3Forms endpoint — see README.
+  // Submit: text the lead to the business.
+  // On phones we open the visitor's Messages app pre-addressed to the
+  // business number; on desktop (no SMS app) we fall back to email.
+  const BIZ_PHONE = '+18084762343';
+  const BIZ_EMAIL = 'DiamondBrightCleaningInc@gmail.com';
+  const successMsg = document.getElementById('qmSuccessMsg');
+  const isMobile = /android|iphone|ipad|ipod|mobile|silk/i.test(navigator.userAgent);
+
   form.addEventListener('submit', e => {
     e.preventDefault();
     const d = new FormData(form);
     const v = k => (d.get(k) || '').toString().trim();
-    const subject = `Free Quote Request — ${v('name') || 'Website'}`;
-    const body =
+    const msg =
+      `New quote request from the website:\n` +
       `Name: ${v('name')}\n` +
       `Phone: ${v('phone')}\n` +
       `Email: ${v('email')}\n` +
       `Service: ${v('service')}\n` +
-      `Home size: ${v('size')}\n\n` +
-      `Details:\n${v('details')}\n`;
-    window.location.href =
-      `mailto:DiamondBrightCleaningInc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      `Home size: ${v('size')}\n` +
+      `Details: ${v('details')}`;
+
+    if (isMobile) {
+      window.location.href = `sms:${BIZ_PHONE}?&body=${encodeURIComponent(msg)}`;
+      successMsg.textContent =
+        "Your text is ready in Messages — just tap Send and it'll reach us at (808) 476-2343. We'll reply with a quote the same day.";
+    } else {
+      const subject = `Free Quote Request — ${v('name') || 'Website'}`;
+      window.location.href =
+        `mailto:${BIZ_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
+      successMsg.innerHTML =
+        'Your email is ready — just hit send. On your phone? Text us at ' +
+        '<a href="sms:+18084762343" style="color:var(--ocean-deep);font-weight:600">(808) 476-2343</a>.';
+    }
     qmForm.hidden = true; qmSuccess.hidden = false;        // show confirmation
     form.reset();
   });
