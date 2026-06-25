@@ -34,7 +34,7 @@ Works on any static host with no backend. The business number/email are set as `
 
 **To text leads fully automatically** (from any device, no visitor action), add an SMS service such as [Twilio](https://twilio.com) behind a small serverless function (e.g. on Netlify/Vercel) and POST the form to it. This requires moving off GitHub Pages and a small monthly cost.
 
-> Note: the desktop email fallback still uses `DiamondBrightCleaningInc@gmail.com` (old brand) — update `BIZ_EMAIL` once Patricia's has its own inbox.
+> The desktop email fallback sends to `biohealth2@gmail.com` (the `BIZ_EMAIL` constant in the submit handler).
 
 ## Notes
 - Background images are stock placeholders. Replacing them with real, high-resolution before/after photos of actual work is the highest-impact upgrade.
