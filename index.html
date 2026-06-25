@@ -185,6 +185,22 @@
   /* badge top-left of hero */
   .ja-badge{position:absolute;top:74px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,rgba(255,122,89,.9),rgba(245,166,35,.85));padding:6px 16px;border-radius:var(--radius);white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.2)}
 
+  /* ---------- ABOUT / OUR STORY ---------- */
+  .s-about{background:linear-gradient(180deg,#fff,var(--sand));color:var(--black)}
+  .s-about .top{margin-top:4vh;max-width:760px}
+  .s-about .story{font-size:clamp(15px,1.5vw,18px);line-height:1.75;color:var(--grey);margin-top:16px}
+  .stats{display:flex;gap:24px 50px;flex-wrap:wrap;justify-content:center;margin:40px auto 0}
+  .stat{min-width:120px}
+  .stat .fig{font-size:clamp(32px,4.2vw,48px);font-weight:700;color:var(--ocean-deep);line-height:1}
+  .stat .lbl{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:#5c5e62;margin-top:8px}
+
+  /* ---------- GALLERY ---------- */
+  .s-gallery{background:#fff;color:var(--black)}
+  .s-gallery .top{margin-top:4vh}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px;width:100%;margin:5vh auto 0}
+  .grid img{width:100%;height:240px;object-fit:cover;border-radius:14px;display:block;transition:transform .3s ease,box-shadow .3s ease}
+  .grid img:hover{transform:scale(1.02);box-shadow:0 14px 34px rgba(0,0,0,.14)}
+
   /* ---------- QUOTE MODAL ---------- */
   .modal-overlay{
     position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
@@ -237,6 +253,8 @@
     .cta{flex-direction:column;margin-bottom:6vh}
     .btn{min-width:260px;width:100%}
     .quotes .quote:nth-child(n+3){display:none}
+    .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .grid img{height:160px}
   }
 </style>
 </head>
@@ -245,9 +263,9 @@
 <nav id="nav">
   <div class="brand">PATRICIA'S SERVICES</div>
   <ul id="menu">
-    <li><a href="#deep">Deep Clean</a></li>
-    <li><a href="#rental">Vacation Rentals</a></li>
-    <li><a href="#commercial">Commercial</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#deep">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="service-policies.html">Policies</a></li>
@@ -269,6 +287,21 @@
     <div class="cta">
       <button type="button" class="btn btn-primary js-quote">Get a Free Quote</button>
       <a href="sms:+18084762343" class="btn btn-secondary">Text Us Now</a>
+    </div>
+  </section>
+
+  <!-- ABOUT / OUR STORY -->
+  <section class="s-about" id="about">
+    <div class="top">
+      <h2 class="dark-text">Our Story</h2>
+      <p class="story">Patricia's Services is a locally owned, kama‘āina-run cleaning company built on a simple belief: every home and business on O‘ahu deserves to feel fresh, cared for, and truly clean. With over 20 years of hands-on experience in professional cleaning, we treat every space with the same attention to detail we'd give our own.</p>
+      <p class="story">From busy families and vacation-rental hosts to offices and storefronts, our clients stay with us because we show up on time, communicate clearly, and stand behind every job with our same-day satisfaction guarantee. We're proud to serve our island community — and to do it with genuine aloha.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="fig">20+</div><div class="lbl">Years Experience</div></div>
+      <div class="stat"><div class="fig">4.8★</div><div class="lbl">Average Rating</div></div>
+      <div class="stat"><div class="fig">150+</div><div class="lbl">Homes &amp; Businesses</div></div>
+      <div class="stat"><div class="fig">100%</div><div class="lbl">Satisfaction Guarantee</div></div>
     </div>
   </section>
 
@@ -329,6 +362,22 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section class="s-gallery" id="gallery">
+    <div class="top">
+      <h2 class="dark-text">Our Work</h2>
+      <p class="sub" style="color:#5c5e62">A glimpse of the spotless spaces we leave behind across O‘ahu.</p>
+    </div>
+    <div class="grid">
+      <img src="img/gallery/g1.jpg" alt="Sparkling clean kitchen" loading="lazy">
+      <img src="img/gallery/g2.jpg" alt="Spotless modern bathroom" loading="lazy">
+      <img src="img/gallery/g3.jpg" alt="Freshly made bedroom" loading="lazy">
+      <img src="img/gallery/g4.jpg" alt="Tidy dining room" loading="lazy">
+      <img src="img/gallery/g5.jpg" alt="Bright, clean living room" loading="lazy">
+      <img src="img/gallery/g6.jpg" alt="Polished office space" loading="lazy">
+    </div>
+  </section>
+
   <!-- REVIEWS -->
   <section class="s-reviews" id="reviews">
     <div class="top">
@@ -338,9 +387,12 @@
       <p class="pitch" style="color:#3a474a">We've built our name one spotless home at a time. Responsive, thorough, and genuinely friendly — here's what your neighbors across the island are saying.</p>
     </div>
     <div class="quotes">
-      <div class="quote"><p>"Asako and her team were incredibly thorough and responsive. Our place has never looked better."</p><div class="who">— Google Review</div></div>
-      <div class="quote"><p>"Booked a move-out clean and got my full deposit back. Professional and on time."</p><div class="who">— Yelp Review</div></div>
-      <div class="quote"><p>"We use them for our rental turnovers. Reliable every single time."</p><div class="who">— Google Review</div></div>
+      <div class="quote"><p>"The team really takes pride in their work. I've been using them for almost a year now and I've never been disappointed."</p><div class="who">— Kat W. · Google</div></div>
+      <div class="quote"><p>"They accommodated us and did an amazing, extremely thorough job. I was amazed at how fresh — but not chemical-like — everything smelled."</p><div class="who">— Ellise F. · Yelp</div></div>
+      <div class="quote"><p>"After two long years looking for a meticulous, hard-working cleaner on O‘ahu, I finally found the right team."</p><div class="who">— Mark M. · Yelp</div></div>
+      <div class="quote"><p>"This company is responsive, professional, and fair. The fee is competitive and absolutely worth it!"</p><div class="who">— Carol W. · Yelp</div></div>
+      <div class="quote"><p>"The team was wonderful and a huge help. Very thorough and detail-oriented."</p><div class="who">— Denise S. · Yelp</div></div>
+      <div class="quote"><p>"They've done an amazing job keeping our home clean and tidy — even on our messiest days!"</p><div class="who">— Michelle S. · Google</div></div>
     </div>
   </section>
 
