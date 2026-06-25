@@ -107,6 +107,11 @@
   .hero, .s-deep, .s-rental, .s-commercial{text-shadow:0 2px 20px rgba(0,0,0,.8), 0 1px 5px rgba(0,0,0,.7)}
   .hero .btn, .s-deep .btn, .s-rental .btn, .s-commercial .btn{text-shadow:none}
 
+  /* hero kicker + service chips */
+  .kicker{font-size:clamp(12px,1.4vw,15px);letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#ffce7a;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:680px;margin:24px auto 0;list-style:none}
+  .chips li{font-size:13.5px;font-weight:500;color:#fff;padding:8px 16px;border:1px solid rgba(255,255,255,.55);border-radius:var(--radius);background:rgba(255,255,255,.1);backdrop-filter:blur(3px);text-shadow:none}
+
   /* supporting sales copy */
   section .pitch{max-width:660px;margin:18px auto 0;font-size:clamp(15px,1.4vw,18px);line-height:1.7;font-weight:400}
   section .feats{display:flex;gap:12px 28px;flex-wrap:wrap;justify-content:center;margin:22px auto 0;max-width:660px;list-style:none}
@@ -280,9 +285,16 @@
   <section class="hero" id="home">
     <div class="ja-badge">ALOHA · 日本語対応 · SERVING ALL O‘AHU</div>
     <div class="top">
+      <p class="kicker">O‘ahu's #1 Cleaning Company</p>
       <h1>Come Home to Spotless</h1>
-      <p class="sub">Kama‘āina-owned &amp; trusted since 2019 · Licensed &amp; Insured · 100% satisfaction</p>
-      <p class="pitch">From a quick refresh to a full reset, our experienced O‘ahu team treats every home like our own — meticulous, dependable, and always on time. Booking takes two minutes, and your first walkthrough is free.</p>
+      <p class="sub">Patricia's Services · Kama‘āina-owned · Licensed &amp; Insured · 100% Satisfaction Guaranteed</p>
+      <ul class="chips">
+        <li>Deep Cleaning &amp; Housekeeping</li>
+        <li>Commercial Cleaning</li>
+        <li>Vacation Rental Turnovers</li>
+        <li>Move-In / Move-Out &amp; Offices</li>
+        <li>Maid Service</li>
+      </ul>
     </div>
     <div class="cta">
       <button type="button" class="btn btn-primary js-quote">Get a Free Quote</button>
