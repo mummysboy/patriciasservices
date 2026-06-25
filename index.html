@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>House Cleaning Honolulu | Deep Clean & Move-Out | Diamond Bright Cleaning</title>
+<meta name="description" content="Honolulu's trusted cleaning company — 4.8★ rated, licensed & insured. Deep cleans, move-outs, vacation-rental turnovers & commercial. 100% satisfaction guaranteed." />
+<meta name="theme-color" content="#000000" />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Diamond Bright Cleaning Inc." />
+<meta property="og:title" content="Diamond Bright Cleaning Inc. — Honolulu's Spotless Standard" />
+<meta property="og:description" content="4.8★ rated, licensed & insured house & commercial cleaning across O'ahu. 100% satisfaction guaranteed." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.diamondbrightcleaninginc.com" />
+
+<!-- Filled LocalBusiness structured data (the SEO fix from the audit) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HouseCleaningService",
+  "name": "Diamond Bright Cleaning Inc.",
+  "image": "https://www.diamondbrightcleaninginc.com/logo.png",
+  "url": "https://www.diamondbrightcleaninginc.com",
+  "telephone": "+1-808-728-0379",
+  "email": "DiamondBrightCleaningInc@gmail.com",
+  "priceRange": "$150-$600",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3841A Keanu St",
+    "addressLocality": "Honolulu",
+    "addressRegion": "HI",
+    "postalCode": "96816",
+    "addressCountry": "US"
+  },
+  "areaServed": { "@type": "AdministrativeArea", "name": "O'ahu, Hawaii" },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "08:00", "closes": "18:00"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "150"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --black:#0a1417;
+    --white:#fff;
+    --grey:#3a474a;
+    --light:#f1f4f3;
+    --sand:#f6f1e7;
+    --ocean:#0e8f8a;       /* turquoise lagoon */
+    --ocean-deep:#0a6f6b;
+    --sunset:#ff7a59;      /* coral / plumeria */
+    --gold:#f5a623;
+    --radius:100px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--black);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+    transition:background .3s ease, color .3s ease;
+    color:var(--white);
+  }
+  nav.scrolled{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);color:var(--black)}
+  nav .brand{font-weight:700;letter-spacing:.5px;font-size:17px;white-space:nowrap}
+  nav ul{display:flex;gap:6px;list-style:none}
+  nav ul a{
+    color:inherit;text-decoration:none;font-size:14px;font-weight:500;
+    padding:6px 14px;border-radius:var(--radius);transition:background .2s;
+  }
+  nav ul a:hover{background:rgba(140,140,140,.25)}
+  .menu-btn{display:none;background:none;border:none;color:inherit;font-size:15px;font-weight:500;cursor:pointer;padding:6px 14px;border-radius:var(--radius)}
+  .menu-btn:hover{background:rgba(140,140,140,.25)}
+
+  /* ---------- SECTIONS ---------- */
+  .snap{overflow-x:hidden}
+  section{
+    position:relative;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;color:var(--white);
+    background-size:cover;background-position:center;
+    padding:90px 20px 60px;
+  }
+  section .top{margin-top:2vh}
+  section h1,section h2{font-size:clamp(30px,4.4vw,52px);font-weight:600;letter-spacing:-.5px}
+  section .sub{font-size:clamp(14px,1.4vw,18px);margin-top:6px;font-weight:400}
+  section .sub a{color:inherit}
+  .dark-text{color:var(--black)}
+
+  /* supporting sales copy */
+  section .pitch{max-width:640px;margin:18px auto 0;font-size:clamp(14px,1.35vw,17px);line-height:1.65;font-weight:400;opacity:.96}
+  section .feats{display:flex;gap:12px 28px;flex-wrap:wrap;justify-content:center;margin:22px auto 0;max-width:660px;list-style:none}
+  section .feats li{font-size:14px;font-weight:500;display:flex;align-items:center;gap:9px}
+  section .feats li::before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;font-size:11px;font-weight:700;flex:none}
+
+  /* button row sits toward the bottom of each section (Tesla layout) */
+  .cta{
+    margin:auto auto 7vh;display:flex;gap:18px;flex-wrap:wrap;justify-content:center;width:90%;max-width:520px;
+  }
+  .btn{
+    flex:1;min-width:200px;max-width:340px;
+    padding:13px 0;border-radius:var(--radius);
+    font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+    text-decoration:none;text-align:center;cursor:pointer;
+    transition:transform .15s ease, opacity .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;box-shadow:0 6px 18px rgba(10,111,107,.35)}
+  .btn-secondary{background:rgba(255,255,255,.92);color:var(--ocean-deep);backdrop-filter:blur(4px)}
+
+  /* ---------- backgrounds (real photos + warm ocean overlay for legible text) ---------- */
+  .hero{background:linear-gradient(180deg,rgba(6,38,42,.55),rgba(6,38,42,.1) 40%,rgba(6,38,42,.5)),url('img/hero.jpg')}
+  .s-deep{background:linear-gradient(180deg,rgba(8,30,34,.5),rgba(8,30,34,.2) 50%,rgba(8,30,34,.55)),url('img/deep.jpg')}
+  .s-rental{background:linear-gradient(180deg,rgba(8,30,34,.45),rgba(8,30,34,.15) 50%,rgba(8,30,34,.5)),url('img/rental.jpg')}
+  .s-commercial{background:linear-gradient(180deg,rgba(6,24,28,.55),rgba(6,24,28,.25) 50%,rgba(6,24,28,.6)),url('img/commercial.jpg')}
+  .hero,.s-deep,.s-rental,.s-commercial{background-size:cover;background-position:center}
+  .s-reviews{background:linear-gradient(180deg,#ffffff,var(--sand));color:var(--black)}
+  .s-pricing{background:linear-gradient(180deg,var(--sand),#ffffff);color:var(--black)}
+
+  /* ---------- REVIEWS ---------- */
+  .s-reviews .top{margin-top:4vh}
+  .rating-big{font-size:clamp(60px,9vw,110px);font-weight:700;line-height:1;color:var(--ocean-deep)}
+  .stars{color:var(--gold);font-size:22px;letter-spacing:4px;margin-top:4px}
+  .rating-meta{color:#5c5e62;font-size:15px;margin-top:8px}
+  .quotes{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:1000px;margin:5vh auto 0}
+  .quote{background:#fff;border-radius:14px;padding:22px 24px;max-width:300px;text-align:left;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+  .quote p{font-size:14px;line-height:1.5;color:#393c41}
+  .quote .who{margin-top:12px;font-size:13px;font-weight:700;color:#171a1e}
+
+  /* ---------- PRICING ---------- */
+  .s-pricing .top{margin-top:4vh}
+  .cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:1100px;margin:5vh auto 0}
+  .card{
+    background:#fff;border-radius:16px;padding:30px 26px;width:240px;text-align:left;box-shadow:0 4px 20px rgba(10,111,107,.07);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+  .card h3{font-size:18px;font-weight:600;color:#171a1e}
+  .card .price{font-size:30px;font-weight:700;margin:8px 0;color:var(--ocean-deep)}
+  .card .price span{font-size:14px;font-weight:500;color:#5c5e62}
+  .card p{font-size:13px;color:#5c5e62;line-height:1.5}
+  .s-pricing .note{margin:32px auto 0;max-width:600px;font-size:14px;color:#5c5e62;line-height:1.55}
+  .s-pricing .quote-btn{display:inline-block;margin:24px auto 0;padding:14px 40px;border-radius:var(--radius);background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;box-shadow:0 6px 18px rgba(10,111,107,.3);transition:transform .15s}
+  .s-pricing .quote-btn:hover{transform:translateY(-2px)}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:linear-gradient(160deg,#0c3034,#06181b);color:#bcd3d2;text-align:center;
+    padding:60px 20px 40px;
+  }
+  footer .f-cta{font-size:clamp(26px,3.5vw,40px);color:#fff;font-weight:600;margin-bottom:8px}
+  footer .f-sub{font-size:15px;margin-bottom:28px}
+  footer .f-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+  footer .f-btns a{
+    padding:13px 34px;border-radius:var(--radius);text-decoration:none;font-weight:600;
+    font-size:14px;letter-spacing:1px;text-transform:uppercase;
+  }
+  .f-call{background:#fff;color:var(--ocean-deep)}
+  .f-text{background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff}
+  .f-info{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;font-size:14px;line-height:1.8}
+  .f-info a{color:#c5c6c8;text-decoration:none}
+  .f-info a:hover{color:#fff}
+  .f-legal{margin-top:34px;font-size:12px;color:#75777b}
+
+  /* badge top-left of hero */
+  .ja-badge{position:absolute;top:74px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,rgba(255,122,89,.9),rgba(245,166,35,.85));padding:6px 16px;border-radius:var(--radius);white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+
+  /* ---------- MOBILE ---------- */
+  @media(max-width:760px){
+    nav ul{display:none}
+    nav ul.open{
+      display:flex;flex-direction:column;position:absolute;top:56px;right:14px;
+      background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-radius:14px;
+      padding:10px;gap:2px;box-shadow:0 10px 30px rgba(0,0,0,.15);min-width:190px;
+    }
+    nav ul.open a{color:#171a1e}
+    .menu-btn{display:block}
+    .cta{flex-direction:column;margin-bottom:6vh}
+    .btn{min-width:260px;width:100%}
+    .quotes .quote:nth-child(n+3){display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="brand">DIAMOND BRIGHT</div>
+  <ul id="menu">
+    <li><a href="#deep">Deep Clean</a></li>
+    <li><a href="#rental">Vacation Rentals</a></li>
+    <li><a href="#commercial">Commercial</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn">Menu</button>
+</nav>
+
+<div class="snap" id="scroller">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="ja-badge">ALOHA · 日本語対応 · SERVING ALL O‘AHU</div>
+    <div class="top">
+      <h1>Come Home to Spotless</h1>
+      <p class="sub">Kama‘āina-owned &amp; trusted since 2019 · Licensed &amp; Insured · 100% satisfaction</p>
+      <p class="pitch">From a quick refresh to a full reset, our experienced O‘ahu team treats every home like our own — meticulous, dependable, and always on time. Booking takes two minutes, and your first walkthrough is free.</p>
+    </div>
+    <div class="cta">
+      <a href="#contact" class="btn btn-primary">Book a Clean</a>
+      <a href="sms:+18087280379" class="btn btn-secondary">Text Us Now</a>
+    </div>
+  </section>
+
+  <!-- DEEP CLEAN -->
+  <section class="s-deep" id="deep">
+    <div class="top">
+      <h2>Deep Cleaning</h2>
+      <p class="sub">Floor to ceiling, done with aloha. Nothing missed — guaranteed.</p>
+      <p class="pitch">Our most thorough service and the perfect first clean. We scrub, detail, and disinfect the spots routine cleaning skips — inside appliances, baseboards, grout, and fixtures — so your whole home feels brand new. Every deep clean ends with a same-day inspection: if we missed a spot, we re-clean it free, on the spot.</p>
+      <ul class="feats">
+        <li>Inside oven &amp; fridge</li>
+        <li>Baseboards &amp; vents</li>
+        <li>Grout &amp; tile</li>
+        <li>Windows &amp; lanai</li>
+      </ul>
+    </div>
+    <div class="cta">
+      <a href="#pricing" class="btn btn-primary">View Pricing</a>
+      <a href="#contact" class="btn btn-secondary">Get a Free Quote</a>
+    </div>
+  </section>
+
+  <!-- VACATION RENTAL -->
+  <section class="s-rental" id="rental">
+    <div class="top">
+      <h2>Vacation Rental Turnovers</h2>
+      <p class="sub">Five-star ready, every time. Reliable check-in &amp; check-out cleans for O‘ahu hosts.</p>
+      <p class="pitch">Protect your ratings and your time. We turn units around fast and flawlessly between guests — fresh linens, restocked essentials, and a hotel-quality finish that keeps the reviews glowing. We flag any damage right away and send photo confirmation when you're off-island, so you can host with total peace of mind.</p>
+      <ul class="feats">
+        <li>Linen &amp; towel service</li>
+        <li>Restock essentials</li>
+        <li>Damage reporting</li>
+        <li>Same-day turnarounds</li>
+      </ul>
+    </div>
+    <div class="cta">
+      <a href="#contact" class="btn btn-primary">Schedule Turnover</a>
+      <a href="sms:+18087280379" class="btn btn-secondary">Text Us Now</a>
+    </div>
+  </section>
+
+  <!-- COMMERCIAL -->
+  <section class="s-commercial" id="commercial">
+    <div class="top">
+      <h2>Commercial Cleaning</h2>
+      <p class="sub">Offices · Restaurants · Banks · Churches · Vessels</p>
+      <p class="pitch">A spotless space keeps your team healthy and your customers impressed. We provide reliable, fully insured janitorial service scheduled around your hours — daily, weekly, or one-time deep cleans — with the same attention to detail we bring to every home. Get a free on-site walkthrough and a clear, no-surprises quote.</p>
+      <ul class="feats">
+        <li>After-hours service</li>
+        <li>Licensed &amp; insured</li>
+        <li>Custom schedules</li>
+        <li>Free walkthrough</li>
+      </ul>
+    </div>
+    <div class="cta">
+      <a href="#contact" class="btn btn-primary">Request a Quote</a>
+      <a href="tel:+18087280379" class="btn btn-secondary">Call (808) 728-0379</a>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="s-reviews" id="reviews">
+    <div class="top">
+      <div class="rating-big">4.8</div>
+      <div class="stars">★★★★★</div>
+      <div class="rating-meta">4.8 on Google · 4.7 on Yelp · Loved by 150+ O‘ahu homes &amp; businesses</div>
+      <p class="pitch" style="color:#3a474a">We've built our name one spotless home at a time. Responsive, thorough, and genuinely friendly — here's what your neighbors across the island are saying.</p>
+    </div>
+    <div class="quotes">
+      <div class="quote"><p>"Asako and her team were incredibly thorough and responsive. Our place has never looked better."</p><div class="who">— Google Review</div></div>
+      <div class="quote"><p>"Booked a move-out clean and got my full deposit back. Professional and on time."</p><div class="who">— Yelp Review</div></div>
+      <div class="quote"><p>"We use them for our rental turnovers. Reliable every single time."</p><div class="who">— Google Review</div></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="s-pricing" id="pricing">
+    <div class="top">
+      <h2 class="dark-text">Honest Pricing</h2>
+      <p class="sub" style="color:#5c5e62">Transparent rates. No surprises. $150 minimum per job.</p>
+      <p class="pitch" style="color:#3a474a">Final pricing depends on your home's size and condition — text us a few quick details and we'll send a firm quote the same day. No contracts, no hidden fees, and every clean is backed by our 100% satisfaction guarantee.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><h3>Recurring Housekeeping</h3><div class="price">$150<span>+</span></div><p>Weekly, bi-weekly or monthly. Priced by home size ($150–$600).</p></div>
+      <div class="card"><h3>Deep Cleaning</h3><div class="price">$200<span>+</span></div><p>Top-to-bottom reset. Includes detail work most cleans skip.</p></div>
+      <div class="card"><h3>Move-In / Move-Out</h3><div class="price">$300<span>+</span></div><p>Deposit-back clean for empty homes and units.</p></div>
+      <div class="card"><h3>Vacation Rental</h3><div class="price">$250<span>+</span></div><p>Per-turnover or monthly plans for O‘ahu hosts.</p></div>
+    </div>
+    <p class="note">Every job includes a same-day inspection walkthrough — if anything's missed, we re-clean it free, on the spot. Add-ons available: lanai, interior windows, carpet shampoo.</p>
+    <a href="#contact" class="quote-btn">Get My Free Quote</a>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact">
+    <div class="f-cta">Ready for a Spotless Space?</div>
+    <div class="f-sub">Same-day inspection walkthrough · 100% satisfaction guaranteed · Mahalo for supporting local</div>
+    <div class="f-btns">
+      <a href="tel:+18087280379" class="f-call">Call (808) 728-0379</a>
+      <a href="sms:+18087280379" class="f-text">Text Us Now</a>
+    </div>
+    <div class="f-info">
+      <div>
+        <strong style="color:#fff">Contact</strong><br>
+        <a href="tel:+18087280379">(808) 728-0379</a><br>
+        <a href="mailto:DiamondBrightCleaningInc@gmail.com">Email Us</a>
+      </div>
+      <div>
+        <strong style="color:#fff">Location</strong><br>
+        3841A Keanu St<br>Honolulu, HI 96816
+      </div>
+      <div>
+        <strong style="color:#fff">Follow</strong><br>
+        <a href="https://www.facebook.com/diamondbrightcleaninginc" target="_blank" rel="noopener">Facebook</a><br>
+        <a href="https://www.instagram.com/diamondbrightcleaninginc" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="f-legal">© 2026 Diamond Bright Cleaning Inc. · Licensed &amp; Insured · Serving all of O‘ahu with aloha 🌺</div>
+  </footer>
+
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  const menu = document.getElementById('menu');
+  // Nav turns solid once you scroll past the hero
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.6);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  // Mobile menu toggle
+  document.getElementById('menuBtn').addEventListener('click', () => menu.classList.toggle('open'));
+  // Smooth in-page navigation for every anchor link (nav + CTA buttons)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', a.getAttribute('href'));
+      }
+      menu.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
