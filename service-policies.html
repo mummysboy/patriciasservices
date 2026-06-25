@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service Policies | Patricia's Services — Honolulu Cleaning</title>
+<meta name="description" content="Service policies for Patricia's Services: satisfaction guarantee, cancellation, payment, pricing, access, and cleaning scope for our Honolulu / O‘ahu cleaning services." />
+<meta name="theme-color" content="#0c3034" />
+<style>
+  :root{
+    --black:#0a1417;--white:#fff;--grey:#3a474a;--light:#f1f4f3;--sand:#f6f1e7;
+    --ocean:#0e8f8a;--ocean-deep:#0a6f6b;--sunset:#ff7a59;--gold:#f5a623;--radius:100px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--black);-webkit-font-smoothing:antialiased;background:#fff}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);color:var(--black);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+  nav .brand{font-weight:700;letter-spacing:.5px;font-size:17px;white-space:nowrap;color:var(--black);text-decoration:none}
+  nav ul{display:flex;gap:6px;list-style:none}
+  nav ul a{color:inherit;text-decoration:none;font-size:14px;font-weight:500;padding:6px 14px;border-radius:var(--radius);transition:background .2s}
+  nav ul a:hover{background:rgba(140,140,140,.18)}
+  nav ul a.active{color:var(--ocean-deep);font-weight:600}
+  .menu-btn{display:none;background:none;border:none;color:inherit;font-size:15px;font-weight:500;cursor:pointer;padding:6px 14px;border-radius:var(--radius)}
+
+  /* HERO */
+  .doc-hero{background:linear-gradient(160deg,#0c3034,#06181b);color:#fff;text-align:center;padding:130px 20px 56px}
+  .doc-hero h1{font-size:clamp(30px,5vw,48px);font-weight:600;letter-spacing:-.5px}
+  .doc-hero p{margin-top:12px;font-size:clamp(14px,1.5vw,17px);color:#bcd3d2;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+  /* DOC BODY */
+  .doc{max-width:820px;margin:0 auto;padding:54px 24px 70px}
+  .policy{padding:26px 0;border-bottom:1px solid #e7ecea}
+  .policy:last-child{border-bottom:none}
+  .policy h2{display:flex;gap:12px;align-items:baseline;font-size:clamp(19px,2.4vw,24px);font-weight:600;color:var(--ocean-deep);line-height:1.25}
+  .policy h2 .num{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;border-radius:8px;
+    background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;font-size:14px;font-weight:700;transform:translateY(-1px)}
+  .policy h3{font-size:16px;font-weight:700;color:var(--black);margin:20px 0 6px}
+  .policy p{font-size:15px;line-height:1.7;color:var(--grey);margin-top:12px}
+  .policy h2 + p{margin-top:14px}
+  .policy ul{list-style:none;margin:12px 0 4px}
+  .policy ul li{position:relative;font-size:15px;line-height:1.6;color:var(--grey);padding:5px 0 5px 26px}
+  .policy ul li::before{content:"";position:absolute;left:4px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--ocean)}
+  .policy .charge{font-weight:700;color:var(--black)}
+  .note{margin-top:16px;background:var(--sand);border-left:4px solid var(--sunset);border-radius:8px;padding:12px 16px;font-size:14px;line-height:1.6;color:var(--black)}
+  .lead{background:var(--light);border-radius:14px;padding:20px 22px;font-size:15px;line-height:1.7;color:var(--grey)}
+
+  /* CTA + FOOTER */
+  .doc-cta{text-align:center;padding:10px 20px 60px}
+  .doc-cta a{display:inline-block;margin:6px;padding:14px 34px;border-radius:var(--radius);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+  .cta-call{background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;box-shadow:0 6px 18px rgba(10,111,107,.3)}
+  .cta-home{background:var(--light);color:var(--ocean-deep)}
+  footer{background:linear-gradient(160deg,#0c3034,#06181b);color:#bcd3d2;text-align:center;padding:54px 20px 40px}
+  footer .f-info{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;font-size:14px;line-height:1.8}
+  footer .f-info a{color:#bcd3d2;text-decoration:none}
+  footer .f-info a:hover{color:#fff}
+  footer strong{color:#fff}
+  .f-legal{margin-top:30px;font-size:12px;color:#75888a}
+
+  @media(max-width:760px){
+    nav ul{display:none}
+    nav ul.open{display:flex;flex-direction:column;position:absolute;top:56px;right:14px;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-radius:14px;padding:10px;gap:2px;box-shadow:0 10px 30px rgba(0,0,0,.15);min-width:190px}
+    .menu-btn{display:block}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">PATRICIA'S SERVICES</a>
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#deep">Services</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="service-policies.html" class="active">Policies</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn">Menu</button>
+</nav>
+
+<header class="doc-hero">
+  <h1>Service Policies</h1>
+  <p>Please review the policies below. By booking with Patricia's Services, you agree to these terms. Mahalo for your understanding and cooperation.</p>
+</header>
+
+<main class="doc">
+
+  <section class="policy">
+    <h2><span class="num">1</span> 100% Same-Day Satisfaction Guarantee — With Walkthrough</h2>
+    <p>We are proud to offer our 100% satisfaction guarantee. After service, our cleaning team will conduct a walk-through inspection with you. If you are not 100% satisfied with any part of the cleaning, we are happy to re-clean any missed areas free of charge at the time of service.</p>
+    <p>If clients are unable or choose not to perform the walk-through inspection, service is considered complete and no additional re-cleanings will be provided.</p>
+    <p>Once the walk-through is completed, our services are considered complete. Additional fees will apply if we are asked to return for cleaning. For move-out cleanings, we recommend that your landlord attend the inspection walk-through with our cleaners.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">2</span> Cancellation Policy</h2>
+
+    <h3>Move-Out Cleaning Cancellations</h3>
+    <p>Move-out cleanings require dedicated time, staff scheduling, and preparation to ensure high-quality results, so we reserve and commit our cleaning team specifically for your appointment. If you need to cancel or reschedule, we kindly require at least 72 hours' notice.</p>
+    <ul>
+      <li>Cancellations or reschedules made <span class="charge">within 72 hours</span> of the scheduled service incur a <span class="charge">50% service charge</span>.</li>
+      <li>Cancellations or changes made <span class="charge">within 24 hours</span> are charged <span class="charge">in full (100%)</span>.</li>
+    </ul>
+    <p>We appreciate your understanding, as late changes directly impact our team's schedule and availability. By confirming your booking, you agree to these terms.</p>
+
+    <h3>Regular Cleaning — No-Show &amp; Same-Day Cancellations</h3>
+    <p>To respect our team's time and scheduling, we maintain a strict policy for missed appointments:</p>
+    <ul>
+      <li>No-shows are charged <span class="charge">100%</span> of the scheduled service.</li>
+      <li>Same-day cancellations are also charged <span class="charge">in full (100%)</span>.</li>
+    </ul>
+    <p>Our team is reserved exclusively for your appointment time, and late cancellations prevent us from serving other clients. Thank you for your respect and cooperation.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">3</span> Payment Policy</h2>
+    <p>Payment is required for all services provided.</p>
+    <ul>
+      <li>Credit/debit card payments are subject to a <span class="charge">4% processing fee</span>.</li>
+      <li>Venmo payments are subject to a <span class="charge">3% processing fee</span>.</li>
+      <li>Zelle payments incur <span class="charge">no additional fees</span>.</li>
+    </ul>
+    <p><strong>Recurring clients:</strong> payment is due within 24 hours of each scheduled cleaning (unless another arrangement has been made with us in writing). A five-day grace period applies; a 5% late fee is added on day six, and service is suspended after fourteen days of non-payment.</p>
+    <p><strong>One-time and deep-clean clients:</strong> payment is due upon completion of service or within 24 hours. A $35 late fee applies if payment is not received within 24 hours, and no future service will be scheduled until the outstanding balance is paid.</p>
+    <p>All quoted prices are pre-tax. Hawaii General Excise Tax (GET) of 4.712% is not included in the quote and will be added to the final invoice.</p>
+    <p>All payments are non-refundable once service has been completed.</p>
+    <p>Tipping is not required but is always appreciated by our hardworking cleaners. If you choose to tip, cash tips given directly to the cleaning team are preferred.</p>
+
+    <h3>Payment Authorization &amp; Restrictions</h3>
+    <p>All payments for services must be made exclusively to Patricia's Services. Clients shall not make, and the Company does not authorize, any payments directly to any employee, cleaner, or subcontractor.</p>
+
+    <h3>Prohibited Payments</h3>
+    <p>Any payments made directly to individuals (including but not limited to cash, check, Zelle, Venmo, or other electronic transfers) are strictly prohibited and will not be recognized as payment toward any invoice issued by the Company.</p>
+
+    <h3>Checks</h3>
+    <p>All checks must be made payable solely to Patricia's Services. Under no circumstances shall checks be made payable to any individual. If a check is handed to a cleaner for delivery, it must still be made payable only to the Company.</p>
+
+    <h3>Returned Check Policy</h3>
+    <p>If a check payment is returned or declined due to insufficient funds or any other bank issue, a $30 returned-check fee will be added to the balance. We kindly ask that the full balance be paid within 24 hours of notice by Zelle, credit card, Venmo Business, or another approved method. After a returned check, we may require a different payment method for future services.</p>
+
+    <h3>No Credit for Unauthorized Payments</h3>
+    <p>The Company is not liable for, and will not provide any credit, refund, or offset for, payments made in violation of this policy. The client remains fully responsible for all outstanding balances regardless of any unauthorized payments made to individuals.</p>
+
+    <h3>Unauthorized Collection</h3>
+    <p>No employee, cleaner, or subcontractor has authority to collect or accept payment on behalf of the Company unless explicitly authorized in writing.</p>
+
+    <h3>Acknowledgment</h3>
+    <p>By engaging the Company's services, the client acknowledges and agrees to comply with these payment terms.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">4</span> Pricing Adjustments</h2>
+    <p>Prices are based on home size, condition, and scope of work. Homes that require additional time due to excessive clutter, pet hair, or heavy buildup not disclosed at the time of booking may incur additional charges. Any pricing adjustments will be communicated promptly.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">5</span> Access to Property</h2>
+    <p>Clients are responsible for providing safe and timely access to the property at the scheduled service time. If we are unable to access the home, the visit may be charged as a late cancellation.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">6</span> Screens, Blinds, Ceiling Fans &amp; Cooker Hood Filters</h2>
+    <p>Screens, blinds, ceiling fans, and cooker hood filters can be fragile, especially when older. While our team takes great care when cleaning, we are not liable for damage to these items. If you would like them cleaned, please remove them beforehand if they are delicate.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">7</span> Move-Out Cleaning</h2>
+    <p>All furniture and personal belongings must be removed prior to service — we do not move furniture, and additional charges apply if items need to be removed or moved. Closets, cabinets, and drawers must be emptied prior to cleaning; if our team must remove items in order to clean these areas, additional charges apply.</p>
+    <p>We do not remove ceiling lights. If you would like one cleaned, please remove it beforehand and we can wipe its surface. We do not clean popcorn ceilings.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">8</span> Move-Out Cleaning — Add-Ons &amp; Exclusions</h2>
+    <p>Move-out cleanings include light wall dusting and interior window wiping only. Any deep, detailed, or heavy-duty cleaning beyond this scope is considered an add-on and will incur additional charges.</p>
+    <p>Move-out cleaning does not include excessive dust, debris, or trash buildup, or post-construction, renovation, or repair residue, unless disclosed at the time of booking and approved as an add-on service.</p>
+    <p>The following services are not included in a standard move-out cleaning and require advance booking. Additional charges apply:</p>
+    <ul>
+      <li>Laundry and bed making</li>
+      <li>Emptying closets, cabinets, or drawers (these must be emptied beforehand; if our team must empty them, an additional charge applies)</li>
+      <li>Heavy wall washing or stain removal</li>
+      <li>Deep floor scrubbing or mopping due to extremely dirty floors</li>
+      <li>Carpet or upholstery cleaning</li>
+      <li>Any exterior cleaning (lanais/patios, windows, outside walls, etc.)</li>
+      <li>Paint or adhesive removal</li>
+      <li>Cleaning areas higher than seven feet</li>
+      <li>Jalousie windows and jalousie doors</li>
+      <li>Deeper cleaning of vents and blinds beyond dusting</li>
+      <li>Heavy mineral buildup cleaning</li>
+      <li>Steam cleaning</li>
+      <li>Sliding mirror doors</li>
+      <li>Ceiling fans</li>
+      <li>Insect/roach cleaning</li>
+    </ul>
+    <div class="note">We do not handle clogged toilets or sinks.</div>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">9</span> Deep Cleaning</h2>
+    <p>Please clear cluttered areas and personal items prior to service so that all cleaning areas can be properly accessed. Additional charges apply if items need to be removed or moved.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">10</span> Regular Cleaning — Add-Ons &amp; Exclusions</h2>
+    <p>Please clear cluttered areas and personal items prior to service so that all cleaning areas can be properly accessed. Additional charges apply if items need to be removed or moved.</p>
+    <p>If desks or workspaces are cluttered with papers, cash, passports, or other important items, we will not clean them. Please clear your workspace beforehand so we can provide a safe and thorough service.</p>
+    <p>Regular house cleaning does not include interior or closed areas such as ovens, refrigerators, closets, cabinets, or drawers. Any removal of items, cleaning of interior or closed areas, or replacement of contents is considered an add-on service and will incur additional charges. All add-ons must be requested at the time of booking and cannot be requested while the cleaning team is on-site.</p>
+    <p>Regular cleaning also does not include cleaning that exceeds ordinary daily use — this includes excessive dust, debris, or trash buildup, as well as dust or residue from construction, renovations, or repairs. These conditions must be disclosed at the time of booking and are subject to additional charges.</p>
+    <p>The following services are not included in regular cleaning and require advance booking. Additional charges apply:</p>
+    <ul>
+      <li>Lanai cleaning</li>
+      <li>Laundry and bed making</li>
+      <li>Window sill or window/door track cleaning</li>
+      <li>Garage or carport cleaning</li>
+      <li>Carpet or upholstery cleaning</li>
+      <li>Floor stripping, waxing, or deep scrubbing</li>
+      <li>Pressure washing or hood cleaning</li>
+      <li>Windows, screens, blinds, or walls</li>
+      <li>Grout scrubbing or stain removal</li>
+      <li>Paint or adhesive removal</li>
+      <li>Cleaning areas higher than seven feet</li>
+      <li>Jalousie windows and jalousie doors</li>
+      <li>Blinds or vent cleaning</li>
+      <li>Sliding mirror doors</li>
+      <li>Ceiling fans</li>
+      <li>Deep microwave cleaning</li>
+      <li>Inside of oven, fridge, and/or dishwasher</li>
+      <li>Insect/roach cleaning</li>
+    </ul>
+    <div class="note">We do not handle clogged toilets or sinks.</div>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">11</span> No Biohazard Cleanings</h2>
+    <p>We do not provide biohazard cleanings. This includes animal or human waste and other hazardous materials.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">12</span> No Cleaning Higher Than 7 Feet</h2>
+    <p>Due to insurance restrictions, our staff may not clean areas higher than seven feet above the ground. If higher areas requiring step ladders need to be cleaned, this must be disclosed prior to service. Otherwise, only areas reachable from the ground will be cleaned.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">13</span> Animals</h2>
+    <p>All animals must be disclosed prior to service.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">14</span> Communication &amp; Service Authorization</h2>
+    <p>To ensure accuracy in scheduling, pricing, and scope of work, all communication must go directly through Patricia's Services (our office/admin team).</p>
+    <p>Our cleaning staff are not authorized to modify the scope of work, approve additional services, adjust pricing, schedule, reschedule, or cancel appointments, or accept payments.</p>
+    <p>Any requests for additional cleaning or changes made directly to cleaning staff will not be considered approved and may not be completed. If additional services are requested on-site, they must be communicated to our office and may be subject to additional charges.</p>
+    <p>Clients agree not to privately engage or hire Patricia's Services staff outside of our company for any cleaning services.</p>
+  </section>
+
+  <section class="policy">
+    <h2><span class="num">15</span> On-Site Cancellation Policy</h2>
+    <p>If a cancellation is made after our cleaning professional has already arrived at the property, 100% of the scheduled service fee will be charged. This policy helps cover reserved scheduling time, travel, and staff allocation. We appreciate your understanding and respect for our team's time and commitment.</p>
+  </section>
+
+</main>
+
+<div class="doc-cta">
+  <a href="index.html#contact" class="cta-call">Get a Free Quote</a>
+  <a href="index.html" class="cta-home">Back to Home</a>
+</div>
+
+<footer>
+  <div class="f-info">
+    <div><strong>Contact</strong><br><a href="tel:+18084762343">(808) 476-2343</a><br><a href="mailto:DiamondBrightCleaningInc@gmail.com">Email Us</a></div>
+    <div><strong>Location</strong><br>3841A Keanu St<br>Honolulu, HI 96816</div>
+    <div><strong>More</strong><br><a href="index.html">Home</a><br><a href="service-policies.html">Service Policies</a></div>
+  </div>
+  <div class="f-legal">© 2026 Patricia's Services · Licensed &amp; Insured · Serving all of O‘ahu with aloha 🌺</div>
+</footer>
+
+<script>
+  const menu = document.getElementById('menu');
+  document.getElementById('menuBtn').addEventListener('click', () => menu.classList.toggle('open'));
+</script>
+</body>
+</html>
