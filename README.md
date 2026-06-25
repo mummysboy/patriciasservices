@@ -1,6 +1,6 @@
-# Diamond Bright Cleaning Inc. — Website
+# Patricia's Services — Website
 
-A single-page, Tesla-inspired marketing site for Diamond Bright Cleaning Inc., a Honolulu / O‘ahu cleaning company.
+A single-page, Tesla-inspired marketing site for Patricia's Services, a Honolulu / O‘ahu cleaning company.
 
 ## Features
 - Full-viewport sections with full-bleed photography and smooth in-page navigation
