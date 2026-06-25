@@ -115,7 +115,7 @@
   }
   .btn{
     flex:1;min-width:200px;max-width:340px;
-    padding:13px 0;border-radius:var(--radius);
+    padding:13px 0;border-radius:var(--radius);border:none;font-family:inherit;
     font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
     text-decoration:none;text-align:center;cursor:pointer;
     transition:transform .15s ease, opacity .2s ease;
@@ -156,7 +156,7 @@
   .card .price span{font-size:14px;font-weight:500;color:#5c5e62}
   .card p{font-size:13px;color:#5c5e62;line-height:1.5}
   .s-pricing .note{margin:32px auto 0;max-width:600px;font-size:14px;color:#5c5e62;line-height:1.55}
-  .s-pricing .quote-btn{display:inline-block;margin:24px auto 0;padding:14px 40px;border-radius:var(--radius);background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;box-shadow:0 6px 18px rgba(10,111,107,.3);transition:transform .15s}
+  .s-pricing .quote-btn{display:inline-block;margin:24px auto 0;padding:14px 40px;border:none;font-family:inherit;cursor:pointer;border-radius:var(--radius);background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;box-shadow:0 6px 18px rgba(10,111,107,.3);transition:transform .15s}
   .s-pricing .quote-btn:hover{transform:translateY(-2px)}
 
   /* ---------- FOOTER ---------- */
@@ -180,6 +180,45 @@
 
   /* badge top-left of hero */
   .ja-badge{position:absolute;top:74px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,rgba(255,122,89,.9),rgba(245,166,35,.85));padding:6px 16px;border-radius:var(--radius);white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+
+  /* ---------- QUOTE MODAL ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+    padding:20px;background:rgba(6,24,28,.6);backdrop-filter:blur(4px);
+    opacity:0;visibility:hidden;transition:opacity .25s ease;
+  }
+  .modal-overlay.open{opacity:1;visibility:visible}
+  .modal{
+    position:relative;background:#fff;color:var(--black);width:100%;max-width:460px;
+    border-radius:18px;padding:32px 28px;max-height:90vh;overflow-y:auto;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);transform:translateY(14px);transition:transform .25s ease;
+  }
+  .modal-overlay.open .modal{transform:none}
+  .modal-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:28px;line-height:1;color:#9aa6a5;cursor:pointer}
+  .modal-close:hover{color:var(--ocean-deep)}
+  .modal h3{font-size:24px;font-weight:600;color:var(--ocean-deep)}
+  .modal-sub{font-size:14px;color:#5c5e62;margin:6px 0 18px;line-height:1.5}
+  .modal form{display:flex;flex-direction:column;gap:11px}
+  .modal input,.modal select,.modal textarea{
+    width:100%;padding:12px 14px;border:1px solid #d7dedd;border-radius:10px;
+    font:inherit;font-size:15px;color:var(--black);background:#fbfdfd;
+  }
+  .modal textarea{min-height:78px;resize:vertical}
+  .modal input:focus,.modal select:focus,.modal textarea:focus{
+    outline:none;border-color:var(--ocean);box-shadow:0 0 0 3px rgba(14,143,138,.15);background:#fff;
+  }
+  .qm-submit{
+    margin-top:4px;padding:14px;border:none;border-radius:var(--radius);cursor:pointer;
+    background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;
+    font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:transform .15s;
+  }
+  .qm-submit:hover{transform:translateY(-2px)}
+  .qm-note{font-size:13px;color:#5c5e62;text-align:center;margin-top:2px}
+  .qm-note a{color:var(--ocean-deep);font-weight:600;text-decoration:none}
+  .qm-success{text-align:center;padding:14px 4px}
+  .qm-success .big{font-size:44px;line-height:1}
+  .qm-success h3{margin:10px 0 6px}
+  .qm-success p{font-size:14px;color:#5c5e62;line-height:1.55}
 
   /* ---------- MOBILE ---------- */
   @media(max-width:760px){
@@ -223,7 +262,7 @@
       <p class="pitch">From a quick refresh to a full reset, our experienced O‘ahu team treats every home like our own — meticulous, dependable, and always on time. Booking takes two minutes, and your first walkthrough is free.</p>
     </div>
     <div class="cta">
-      <a href="#contact" class="btn btn-primary">Book a Clean</a>
+      <button type="button" class="btn btn-primary js-quote">Get a Free Quote</button>
       <a href="sms:+18084762343" class="btn btn-secondary">Text Us Now</a>
     </div>
   </section>
@@ -243,7 +282,7 @@
     </div>
     <div class="cta">
       <a href="#pricing" class="btn btn-primary">View Pricing</a>
-      <a href="#contact" class="btn btn-secondary">Get a Free Quote</a>
+      <button type="button" class="btn btn-secondary js-quote">Get a Free Quote</button>
     </div>
   </section>
 
@@ -261,7 +300,7 @@
       </ul>
     </div>
     <div class="cta">
-      <a href="#contact" class="btn btn-primary">Schedule Turnover</a>
+      <button type="button" class="btn btn-primary js-quote">Schedule Turnover</button>
       <a href="sms:+18084762343" class="btn btn-secondary">Text Us Now</a>
     </div>
   </section>
@@ -280,7 +319,7 @@
       </ul>
     </div>
     <div class="cta">
-      <a href="#contact" class="btn btn-primary">Request a Quote</a>
+      <button type="button" class="btn btn-primary js-quote">Request a Quote</button>
       <a href="tel:+18084762343" class="btn btn-secondary">Call (808) 476-2343</a>
     </div>
   </section>
@@ -314,7 +353,7 @@
       <div class="card"><h3>Vacation Rental</h3><div class="price">$250<span>+</span></div><p>Per-turnover or monthly plans for O‘ahu hosts.</p></div>
     </div>
     <p class="note">Every job includes a same-day inspection walkthrough — if anything's missed, we re-clean it free, on the spot. Add-ons available: lanai, interior windows, carpet shampoo.</p>
-    <a href="#contact" class="quote-btn">Get My Free Quote</a>
+    <button type="button" class="quote-btn js-quote">Get My Free Quote</button>
   </section>
 
   <!-- CONTACT / FOOTER -->
@@ -346,6 +385,47 @@
 
 </div>
 
+<!-- QUOTE MODAL -->
+<div class="modal-overlay" id="quoteModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="qmTitle">
+    <button type="button" class="modal-close" id="qmClose" aria-label="Close">&times;</button>
+    <div id="qmForm">
+      <h3 id="qmTitle">Get Your Free Quote</h3>
+      <p class="modal-sub">Tell us about the job and we'll text you a quote the same day. No obligation.</p>
+      <form id="quoteForm">
+        <input name="name" type="text" placeholder="Your name" aria-label="Your name" required>
+        <input name="phone" type="tel" placeholder="Phone number" aria-label="Phone number" required>
+        <input name="email" type="email" placeholder="Email (optional)" aria-label="Email">
+        <select name="service" aria-label="Service needed" required>
+          <option value="" disabled selected>What do you need cleaned?</option>
+          <option>Recurring housekeeping</option>
+          <option>Deep cleaning</option>
+          <option>Move-in / move-out</option>
+          <option>Vacation rental turnover</option>
+          <option>Commercial / office</option>
+          <option>Other</option>
+        </select>
+        <select name="size" aria-label="Home size">
+          <option value="" disabled selected>Home size (optional)</option>
+          <option>Studio / 1 bedroom</option>
+          <option>2 bedrooms</option>
+          <option>3 bedrooms</option>
+          <option>4+ bedrooms</option>
+          <option>Commercial space</option>
+        </select>
+        <textarea name="details" placeholder="Anything else? Preferred date, square footage, special requests…" aria-label="Details"></textarea>
+        <button type="submit" class="qm-submit">Send My Request</button>
+        <p class="qm-note">Prefer to text? <a href="sms:+18084762343">Message us at (808) 476-2343</a></p>
+      </form>
+    </div>
+    <div id="qmSuccess" class="qm-success" hidden>
+      <div class="big">🌺</div>
+      <h3>Mahalo!</h3>
+      <p>Your request is ready in your email app — just hit send and we'll reply with a quote the same day. Prefer to text? <a href="sms:+18084762343" style="color:var(--ocean-deep);font-weight:600">Message us here.</a></p>
+    </div>
+  </div>
+</div>
+
 <script>
   const nav = document.getElementById('nav');
   const menu = document.getElementById('menu');
@@ -366,6 +446,54 @@
       }
       menu.classList.remove('open');
     });
+  });
+
+  /* ---------- Quote modal ---------- */
+  const modal = document.getElementById('quoteModal');
+  const qmForm = document.getElementById('qmForm');
+  const qmSuccess = document.getElementById('qmSuccess');
+  const form = document.getElementById('quoteForm');
+
+  const openModal = () => {
+    qmForm.hidden = false; qmSuccess.hidden = true;        // always show the form fresh
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { const first = form.querySelector('input'); if (first) first.focus(); }, 60);
+  };
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  // Open from any quote CTA
+  document.querySelectorAll('.js-quote').forEach(btn =>
+    btn.addEventListener('click', e => { e.preventDefault(); openModal(); }));
+  // Close interactions
+  document.getElementById('qmClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+  // Submit: compose an email to the business with all the details.
+  // To collect leads automatically (no email app), replace the mailto block
+  // below with a fetch() POST to a Formspree/Web3Forms endpoint — see README.
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const v = k => (d.get(k) || '').toString().trim();
+    const subject = `Free Quote Request — ${v('name') || 'Website'}`;
+    const body =
+      `Name: ${v('name')}\n` +
+      `Phone: ${v('phone')}\n` +
+      `Email: ${v('email')}\n` +
+      `Service: ${v('service')}\n` +
+      `Home size: ${v('size')}\n\n` +
+      `Details:\n${v('details')}\n`;
+    window.location.href =
+      `mailto:DiamondBrightCleaningInc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    qmForm.hidden = true; qmSuccess.hidden = false;        // show confirmation
+    form.reset();
   });
 </script>
 </body>

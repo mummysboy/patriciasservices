@@ -25,6 +25,14 @@ python3 -m http.server
 ## Deploy
 Works as a static site on GitHub Pages, Netlify, Vercel, or any static host. For GitHub Pages: Settings → Pages → deploy from `main` / root.
 
+## Quote form
+Every "Get a Free Quote" button opens a modal form (name, phone, email, service, home size, details). On submit it composes an email to the business with all the details — works on any static host with no backend.
+
+**To receive leads automatically** (without opening the visitor's email app), sign up for a free form endpoint and swap the submit handler in `index.html`:
+- [Formspree](https://formspree.io) or [Web3Forms](https://web3forms.com) — replace the `mailto:` block in the `form.addEventListener('submit', …)` handler with a `fetch()` POST to your endpoint.
+
+> Note: the form currently emails `DiamondBrightCleaningInc@gmail.com` (old brand). Update this address in the submit handler once Patricia's has its own inbox.
+
 ## Notes
 - Background images are stock placeholders. Replacing them with real, high-resolution before/after photos of actual work is the highest-impact upgrade.
 - To swap an image, drop a file into `img/` using the same name (`hero.jpg`, `deep.jpg`, `rental.jpg`, `commercial.jpg`).
