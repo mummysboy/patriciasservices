@@ -103,8 +103,12 @@
   section .sub a{color:inherit}
   .dark-text{color:var(--black)}
 
+  /* legibility: lift white copy off the photos */
+  .hero, .s-deep, .s-rental, .s-commercial{text-shadow:0 1px 16px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.4)}
+  .hero .btn, .s-deep .btn, .s-rental .btn, .s-commercial .btn{text-shadow:none}
+
   /* supporting sales copy */
-  section .pitch{max-width:640px;margin:18px auto 0;font-size:clamp(14px,1.35vw,17px);line-height:1.65;font-weight:400;opacity:.96}
+  section .pitch{max-width:660px;margin:18px auto 0;font-size:clamp(15px,1.4vw,18px);line-height:1.7;font-weight:400}
   section .feats{display:flex;gap:12px 28px;flex-wrap:wrap;justify-content:center;margin:22px auto 0;max-width:660px;list-style:none}
   section .feats li{font-size:14px;font-weight:500;display:flex;align-items:center;gap:9px}
   section .feats li::before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;font-size:11px;font-weight:700;flex:none}
@@ -125,10 +129,10 @@
   .btn-secondary{background:rgba(255,255,255,.92);color:var(--ocean-deep);backdrop-filter:blur(4px)}
 
   /* ---------- backgrounds (real photos + warm ocean overlay for legible text) ---------- */
-  .hero{background:linear-gradient(180deg,rgba(6,38,42,.55),rgba(6,38,42,.1) 40%,rgba(6,38,42,.5)),url('img/hero.jpg')}
-  .s-deep{background:linear-gradient(180deg,rgba(8,30,34,.5),rgba(8,30,34,.2) 50%,rgba(8,30,34,.55)),url('img/deep.jpg')}
-  .s-rental{background:linear-gradient(180deg,rgba(8,30,34,.45),rgba(8,30,34,.15) 50%,rgba(8,30,34,.5)),url('img/rental.jpg')}
-  .s-commercial{background:linear-gradient(180deg,rgba(6,24,28,.55),rgba(6,24,28,.25) 50%,rgba(6,24,28,.6)),url('img/commercial.jpg')}
+  .hero{background:linear-gradient(180deg,rgba(6,38,42,.62),rgba(6,38,42,.34) 45%,rgba(6,38,42,.58)),url('img/hero.jpg')}
+  .s-deep{background:linear-gradient(180deg,rgba(8,30,34,.62),rgba(8,30,34,.4) 50%,rgba(8,30,34,.62)),url('img/deep.jpg')}
+  .s-rental{background:linear-gradient(180deg,rgba(8,30,34,.58),rgba(8,30,34,.36) 50%,rgba(8,30,34,.58)),url('img/rental.jpg')}
+  .s-commercial{background:linear-gradient(180deg,rgba(6,24,28,.64),rgba(6,24,28,.42) 50%,rgba(6,24,28,.66)),url('img/commercial.jpg')}
   .hero,.s-deep,.s-rental,.s-commercial{background-size:cover;background-position:center}
   .s-reviews{background:linear-gradient(180deg,#ffffff,var(--sand));color:var(--black)}
   .s-pricing{background:linear-gradient(180deg,var(--sand),#ffffff);color:var(--black)}
