@@ -246,6 +246,9 @@
     overflow-x:auto;overflow-y:hidden;
     scroll-snap-type:x mandatory;scroll-behavior:smooth;
     scrollbar-width:none;-ms-overflow-style:none;
+    -webkit-overflow-scrolling:touch;        /* momentum on iOS */
+    touch-action:pan-x;                       /* allow horizontal swipe, don't hijack it */
+    overscroll-behavior-x:contain;
     padding:18px 0 26px;  /* room for shadow + lift */
   }
   .cover-viewport::-webkit-scrollbar{display:none}
@@ -287,9 +290,11 @@
   }
   .cover-counter b{color:var(--ocean-deep);font-weight:600}
   @media(max-width:760px){
-    .cover{--slide-w:84vw}
-    .cover-rail{gap:20px}
+    .cover{--slide-w:78vw;margin-top:4vh}
+    .cover-rail{gap:16px}
+    .cover-slide{border-radius:20px;box-shadow:0 22px 44px -18px rgba(8,30,34,.5)}
     .cover-nav{display:none}
+    .cover-counter{margin-top:14px;font-size:12px}
   }
 
   /* ---------- QUOTE MODAL ---------- */
@@ -719,26 +724,33 @@
     vp.addEventListener('mouseleave', () => { startAuto(); });
     startAuto();
 
-    // Drag / swipe to scrub through the rail.
+    // Touch: native scroll-snap already makes the strip swipeable — we only
+    // pause auto-advance while the finger is down so it doesn't fight the swipe.
+    vp.addEventListener('touchstart', () => {
+      clearInterval(autoId); autoId = null;
+      clearTimeout(resumeId); resumeId = setTimeout(startAuto, 7000);
+    }, {passive:true});
+
+    // Mouse: click-and-drag to scrub (desktop only — touch is handled natively).
     let dragging = false, startX = 0, startScroll = 0, moved = false;
-    function down(e){
+    vp.addEventListener('pointerdown', e => {
+      if (e.pointerType && e.pointerType !== 'mouse') return;   // leave touch to native scroll
       dragging = true; moved = false;
-      startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      startX = e.clientX;
       startScroll = vp.scrollLeft;
       vp.style.scrollSnapType = 'none';
       vp.style.scrollBehavior = 'auto';
       slides.forEach(s => s.classList.add('grabbing'));
       clearInterval(autoId); autoId = null;
-    }
-    function move(e){
+    });
+    window.addEventListener('pointermove', e => {
       if (!dragging) return;
-      const x = (e.touches ? e.touches[0].clientX : e.clientX);
-      const dx = x - startX;
+      const dx = e.clientX - startX;
       if (Math.abs(dx) > 3) moved = true;
       vp.scrollLeft = startScroll - dx;
-      if (e.cancelable) e.preventDefault();
-    }
-    function up(){
+      e.preventDefault();
+    });
+    window.addEventListener('pointerup', () => {
       if (!dragging) return;
       dragging = false;
       slides.forEach(s => s.classList.remove('grabbing'));
@@ -746,13 +758,7 @@
       vp.style.scrollSnapType = 'x mandatory';
       if (moved) goTo(active);     // settle onto the nearest slide
       stopAuto();
-    }
-    vp.addEventListener('pointerdown', down);
-    window.addEventListener('pointermove', move, {passive:false});
-    window.addEventListener('pointerup', up);
-    vp.addEventListener('touchstart', down, {passive:false});
-    window.addEventListener('touchmove', move, {passive:false});
-    window.addEventListener('touchend', up);
+    });
 
     // Start centred on the first slide (instant, container-only — no page movement).
     window.addEventListener('load', () => goTo(0, false));
