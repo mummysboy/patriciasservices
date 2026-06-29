@@ -150,18 +150,45 @@
   .s-rental{background:linear-gradient(180deg,rgba(8,30,34,.38),rgba(8,30,34,.12) 50%,rgba(8,30,34,.4)),url('img/rental.jpg')}
   .s-commercial{background:linear-gradient(180deg,rgba(6,24,28,.44),rgba(6,24,28,.18) 50%,rgba(6,24,28,.46)),url('img/commercial.jpg')}
   .hero,.s-deep,.s-rental,.s-commercial{background-size:cover;background-position:center}
-  .s-reviews{background:linear-gradient(180deg,#ffffff,var(--sand));color:var(--black)}
+  .s-reviews{
+    position:relative;overflow:hidden;color:#fff;
+    background:linear-gradient(135deg,#3a5fc4 0%,#4a6fd2 55%,#5f83de 100%);
+  }
   .s-pricing{background:linear-gradient(180deg,var(--sand),#ffffff);color:var(--black)}
 
   /* ---------- REVIEWS ---------- */
-  .s-reviews .top{margin-top:4vh}
-  .rating-big{font-size:clamp(60px,9vw,110px);font-weight:700;line-height:1;color:var(--ocean-deep)}
-  .stars{color:var(--gold);font-size:22px;letter-spacing:4px;margin-top:4px}
-  .rating-meta{color:#5c5e62;font-size:15px;margin-top:8px}
-  .quotes{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:1000px;margin:5vh auto 0}
-  .quote{background:#fff;border-radius:14px;padding:22px 24px;max-width:300px;text-align:left;box-shadow:0 4px 24px rgba(0,0,0,.06)}
-  .quote p{font-size:14px;line-height:1.5;color:#393c41}
-  .quote .who{margin-top:12px;font-size:13px;font-weight:700;color:#171a1e}
+  /* concentric arc decorations, like the live site */
+  .s-reviews::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(circle at 82% 62%, transparent 34%, rgba(255,255,255,.07) 35% 37%, transparent 38%),
+      radial-gradient(circle at 82% 62%, transparent 49%, rgba(255,255,255,.06) 50% 52%, transparent 53%),
+      radial-gradient(circle at 82% 62%, transparent 65%, rgba(255,255,255,.05) 66% 68%, transparent 69%),
+      radial-gradient(circle at 10% 95%, rgba(255,255,255,.06) 0 18%, transparent 19%);
+  }
+  /* wavy top edge */
+  .reviews-wave{position:absolute;top:-1px;left:0;width:100%;height:64px;display:block;z-index:1}
+  .reviews-wave svg{width:100%;height:100%;display:block}
+  .s-reviews>.inner{position:relative;z-index:2;width:100%}
+  .reviews-head{
+    text-align:center;font-family:Georgia,"Times New Roman",serif;font-weight:500;
+    font-size:clamp(30px,4.4vw,44px);letter-spacing:.5px;
+    text-decoration:underline;text-underline-offset:9px;text-decoration-thickness:1px;
+    margin-top:2vh;
+  }
+  .reviews-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px 52px;
+    max-width:1180px;margin:7vh auto 0;padding:0 28px;text-align:left;
+  }
+  .review .name{
+    font-family:Georgia,"Times New Roman",serif;font-weight:500;
+    font-size:clamp(22px,2.3vw,30px);line-height:1.2;margin-bottom:26px;
+  }
+  .review p{font-size:clamp(16px,1.5vw,19px);line-height:1.62;color:#eef2ff;margin:0}
+  @media(max-width:860px){
+    .reviews-grid{grid-template-columns:1fr;gap:40px;max-width:620px}
+    .review .name{margin-bottom:14px}
+  }
 
   /* ---------- PRICING ---------- */
   .s-pricing .top{margin-top:4vh}
@@ -211,11 +238,59 @@
   .stat .lbl{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:#5c5e62;margin-top:8px}
 
   /* ---------- GALLERY ---------- */
-  .s-gallery{background:#fff;color:var(--black)}
+  .s-gallery{background:#fff;color:var(--black);overflow:hidden}
   .s-gallery .top{margin-top:4vh}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1040px;width:100%;margin:5vh auto 0}
-  .grid img{width:100%;height:240px;object-fit:cover;border-radius:14px;display:block;transition:transform .3s ease,box-shadow .3s ease}
-  .grid img:hover{transform:scale(1.02);box-shadow:0 14px 34px rgba(0,0,0,.14)}
+  /* Coverflow — centered hero, neighbours recede */
+  .cover{position:relative;width:100%;margin:6vh auto 0;--slide-w:min(78vw,700px)}
+  .cover-viewport{
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    scrollbar-width:none;-ms-overflow-style:none;
+    padding:18px 0 26px;  /* room for shadow + lift */
+  }
+  .cover-viewport::-webkit-scrollbar{display:none}
+  .cover-rail{
+    display:flex;gap:34px;
+    padding-inline:calc(50% - var(--slide-w)/2);
+  }
+  .cover-slide{
+    flex:0 0 auto;width:var(--slide-w);aspect-ratio:3/2;
+    scroll-snap-align:center;
+    border-radius:26px;overflow:hidden;background:var(--sand);
+    box-shadow:0 34px 64px -22px rgba(8,30,34,.45);
+    transform:scale(.84);opacity:.45;
+    transition:box-shadow .6s cubic-bezier(.22,.61,.36,1);
+    will-change:transform,opacity;cursor:grab;
+  }
+  .cover-slide.grabbing{cursor:grabbing}
+  .cover-slide img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    pointer-events:none;-webkit-user-drag:none;user-select:none;
+  }
+  /* nav arrows */
+  .cover-nav{
+    position:absolute;top:calc(50% - 10px);transform:translateY(-50%);z-index:3;
+    width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(255,255,255,.82);backdrop-filter:blur(10px);
+    box-shadow:0 8px 24px rgba(8,30,34,.18);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ocean-deep);transition:transform .2s ease,background .2s ease,opacity .2s ease;
+  }
+  .cover-nav:hover{transform:translateY(-50%) scale(1.07);background:#fff}
+  .cover-nav svg{width:20px;height:20px}
+  .cover-nav.prev{left:max(16px,4vw)}
+  .cover-nav.next{right:max(16px,4vw)}
+  /* slim counter */
+  .cover-counter{
+    text-align:center;margin-top:18px;
+    font-size:13px;letter-spacing:3px;color:#8a9594;font-variant-numeric:tabular-nums;
+  }
+  .cover-counter b{color:var(--ocean-deep);font-weight:600}
+  @media(max-width:760px){
+    .cover{--slide-w:84vw}
+    .cover-rail{gap:20px}
+    .cover-nav{display:none}
+  }
 
   /* ---------- QUOTE MODAL ---------- */
   .modal-overlay{
@@ -243,6 +318,16 @@
   .modal input:focus,.modal select:focus,.modal textarea:focus{
     outline:none;border-color:var(--ocean);box-shadow:0 0 0 3px rgba(14,143,138,.15);background:#fff;
   }
+  /* grouped fields + checkbox grids */
+  .qm-group{display:flex;flex-direction:column;gap:7px;margin-top:5px}
+  .qm-label{font-size:13px;font-weight:600;color:var(--ocean-deep);letter-spacing:.2px}
+  .qm-label .req{color:#c0563f}
+  .qm-row{display:flex;gap:10px}
+  .qm-row>*{flex:1;min-width:0}
+  .qm-checks{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px}
+  .qm-check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--black);cursor:pointer;line-height:1.3}
+  .qm-check input{width:16px;height:16px;flex:0 0 auto;margin:0;accent-color:var(--ocean)}
+  @media(max-width:520px){.qm-checks{grid-template-columns:1fr}}
   .qm-submit{
     margin-top:4px;padding:14px;border:none;border-radius:var(--radius);cursor:pointer;
     background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;
@@ -384,31 +469,43 @@
       <h2 class="dark-text">Our Work</h2>
       <p class="sub" style="color:#5c5e62">A glimpse of the spotless spaces we leave behind across O‘ahu.</p>
     </div>
-    <div class="grid">
-      <img src="img/gallery/g1.jpg" alt="Sparkling clean kitchen" loading="lazy">
-      <img src="img/gallery/g2.jpg" alt="Spotless modern bathroom" loading="lazy">
-      <img src="img/gallery/g3.jpg" alt="Freshly made bedroom" loading="lazy">
-      <img src="img/gallery/g4.jpg" alt="Tidy dining room" loading="lazy">
-      <img src="img/gallery/g5.jpg" alt="Bright, clean living room" loading="lazy">
-      <img src="img/gallery/g6.jpg" alt="Polished office space" loading="lazy">
+    <div class="cover" id="cover">
+      <button class="cover-nav prev" id="coverPrev" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="cover-viewport" id="coverViewport">
+        <div class="cover-rail" id="coverRail"></div>
+      </div>
+      <button class="cover-nav next" id="coverNext" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <div class="cover-counter" id="coverCounter"></div>
     </div>
   </section>
 
   <!-- REVIEWS -->
   <section class="s-reviews" id="reviews">
-    <div class="top">
-      <div class="rating-big">4.8</div>
-      <div class="stars">★★★★★</div>
-      <div class="rating-meta">4.8 on Google · 4.7 on Yelp · Loved by 150+ O‘ahu homes &amp; businesses</div>
-      <p class="pitch" style="color:#3a474a">We've built our name one spotless home at a time. Responsive, thorough, and genuinely friendly — here's what your neighbors across the island are saying.</p>
+    <div class="reviews-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 64" preserveAspectRatio="none">
+        <path d="M0,40 C240,8 480,8 720,30 C960,52 1200,52 1440,20 L1440,0 L0,0 Z" fill="#ffffff"></path>
+      </svg>
     </div>
-    <div class="quotes">
-      <div class="quote"><p>"The team really takes pride in their work. I've been using them for almost a year now and I've never been disappointed."</p><div class="who">— Kat W. · Google</div></div>
-      <div class="quote"><p>"They accommodated us and did an amazing, extremely thorough job. I was amazed at how fresh — but not chemical-like — everything smelled."</p><div class="who">— Ellise F. · Yelp</div></div>
-      <div class="quote"><p>"After two long years looking for a meticulous, hard-working cleaner on O‘ahu, I finally found the right team."</p><div class="who">— Mark M. · Yelp</div></div>
-      <div class="quote"><p>"This company is responsive, professional, and fair. The fee is competitive and absolutely worth it!"</p><div class="who">— Carol W. · Yelp</div></div>
-      <div class="quote"><p>"The team was wonderful and a huge help. Very thorough and detail-oriented."</p><div class="who">— Denise S. · Yelp</div></div>
-      <div class="quote"><p>"They've done an amazing job keeping our home clean and tidy — even on our messiest days!"</p><div class="who">— Michelle S. · Google</div></div>
+    <div class="inner">
+      <h2 class="reviews-head">Reviews</h2>
+      <div class="reviews-grid">
+        <div class="review">
+          <div class="name">Kat W. (Google review)</div>
+          <p>“Patricia &amp; her team really take pride in the work they do. I've been using Patricia's Services for almost a year now &amp; I've never been disappointed. The attention to detail, the follow up after every appointment leaves me feeling that I'm a valued client! Thank you Patricia &amp; team!”</p>
+        </div>
+        <div class="review">
+          <div class="name">Ellise F. (Yelp review)</div>
+          <p>“We contacted Patricia's Services for a move-out cleaning of a 2 bed/2 bath apartment on somewhat short notice. They were able to accommodate us and did an amazing, and extremely thorough job. I was actually amazed at how fresh--but not chemical-like--everything smelled when we return. It felt like a whole new place.”</p>
+        </div>
+        <div class="review">
+          <div class="name">Mark M. (Yelp review)</div>
+          <p>“Wow. After two long years of looking for a meticulous and hard working cleaner on Oahu, I found Patricia and her team. After living in NYC, good house cleaners was a simple task. Not here on Oahu. I'm so impressed and thrilled I found this cleaning company.”</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -470,28 +567,80 @@
       <h3 id="qmTitle">Get Your Free Quote</h3>
       <p class="modal-sub">Tell us about the job and we'll text you a quote the same day. No obligation.</p>
       <form id="quoteForm">
-        <input name="name" type="text" placeholder="Your name" aria-label="Your name" required>
+        <div class="qm-row">
+          <input name="firstName" type="text" placeholder="First name" aria-label="First name" required>
+          <input name="lastName" type="text" placeholder="Last name" aria-label="Last name" required>
+        </div>
         <input name="phone" type="tel" placeholder="Phone number" aria-label="Phone number" required>
-        <input name="email" type="email" placeholder="Email (optional)" aria-label="Email">
-        <select name="service" aria-label="Service needed" required>
-          <option value="" disabled selected>What do you need cleaned?</option>
-          <option>Recurring housekeeping</option>
-          <option>Deep cleaning</option>
-          <option>Move-in / move-out</option>
-          <option>Vacation rental turnover</option>
-          <option>Commercial / office</option>
-          <option>Other</option>
-        </select>
-        <select name="size" aria-label="Home size">
-          <option value="" disabled selected>Home size (optional)</option>
-          <option>Studio / 1 bedroom</option>
-          <option>2 bedrooms</option>
-          <option>3 bedrooms</option>
-          <option>4+ bedrooms</option>
-          <option>Commercial space</option>
-        </select>
-        <textarea name="details" placeholder="Anything else? Preferred date, square footage, special requests…" aria-label="Details"></textarea>
-        <button type="submit" class="qm-submit">Send My Request</button>
+        <input name="email" type="email" placeholder="Email" aria-label="Email" required>
+
+        <div class="qm-group">
+          <span class="qm-label">Property Address <span class="req">*</span></span>
+          <input name="address1" type="text" placeholder="Address line 1" aria-label="Address line 1" autocomplete="address-line1" required>
+          <input name="address2" type="text" placeholder="Address line 2" aria-label="Address line 2" autocomplete="address-line2">
+          <div class="qm-row">
+            <input name="city" type="text" placeholder="City" aria-label="City" autocomplete="address-level2" required>
+            <input name="state" type="text" placeholder="State" aria-label="State" autocomplete="address-level1" required>
+            <input name="zip" type="text" placeholder="ZIP" aria-label="ZIP Code" autocomplete="postal-code" inputmode="numeric" required>
+          </div>
+        </div>
+
+        <div class="qm-group">
+          <span class="qm-label">Type of Cleaning Service</span>
+          <div class="qm-checks">
+            <label class="qm-check"><input type="checkbox" name="service" value="Regular cleaning">Regular cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="service" value="Deep cleaning">Deep cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="service" value="Move-out cleaning">Move-out cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="service" value="Move-in cleaning">Move-in cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="service" value="Vacation cleaning turnover">Vacation cleaning turnover</label>
+            <label class="qm-check"><input type="checkbox" name="service" value="Post-construction cleaning">Post-construction cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="service" value="Other">Other</label>
+          </div>
+        </div>
+
+        <div class="qm-group">
+          <span class="qm-label">Type of Property</span>
+          <div class="qm-checks">
+            <label class="qm-check"><input type="checkbox" name="property" value="House">House</label>
+            <label class="qm-check"><input type="checkbox" name="property" value="Apt/condo">Apt/condo</label>
+            <label class="qm-check"><input type="checkbox" name="property" value="Townhouse">Townhouse</label>
+            <label class="qm-check"><input type="checkbox" name="property" value="Vacation rental">Vacation rental</label>
+            <label class="qm-check"><input type="checkbox" name="property" value="Office/Commercial space">Office/Commercial space</label>
+          </div>
+        </div>
+
+        <div class="qm-row">
+          <input name="sqft" type="text" placeholder="Square footage (approx.)" aria-label="Square footage">
+          <input name="bedbath" type="text" placeholder="Bedrooms & bathrooms" aria-label="Number of bedrooms and bathrooms">
+        </div>
+
+        <div class="qm-group">
+          <span class="qm-label">Any of these special cleaning services needed?</span>
+          <div class="qm-checks">
+            <label class="qm-check"><input type="checkbox" name="special" value="Patio/lanai cleaning">Patio/lanai cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Jalousie windows">Jalousie windows</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Inside oven">Inside oven</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Inside refrigerator">Inside refrigerator</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Window cleaning">Window cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Carpet cleaning">Carpet cleaning</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Laundry/bedding">Laundry/bedding</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Pet hair removal">Pet hair removal</label>
+            <label class="qm-check"><input type="checkbox" name="special" value="Heavy buildup">Heavy buildup</label>
+          </div>
+        </div>
+
+        <textarea name="condition" placeholder="Describe current condition of the property" aria-label="Describe current condition of the property"></textarea>
+
+        <div class="qm-group">
+          <span class="qm-label">Preferred cleaning time</span>
+          <div class="qm-checks">
+            <label class="qm-check"><input type="checkbox" name="time" value="Morning">Morning</label>
+            <label class="qm-check"><input type="checkbox" name="time" value="Afternoon">Afternoon</label>
+            <label class="qm-check"><input type="checkbox" name="time" value="Flexible">Flexible</label>
+          </div>
+        </div>
+
+        <button type="submit" class="qm-submit">Submit</button>
         <p class="qm-note">Prefer to text? <a href="sms:+18084762343">Message us at (808) 476-2343</a></p>
       </form>
     </div>
@@ -504,6 +653,111 @@
 </div>
 
 <script>
+  // ---------- COVERFLOW GALLERY ----------
+  (function buildCoverflow(){
+    const vp = document.getElementById('coverViewport');
+    const rail = document.getElementById('coverRail');
+    const counter = document.getElementById('coverCounter');
+    if (!vp || !rail) return;
+    const total = 19;
+    const photos = Array.from({length:total}, (_,i)=>`img/carousel/p${String(i+1).padStart(2,'0')}.jpg`);
+    const slides = photos.map((src, i) => {
+      const s = document.createElement('div');
+      s.className = 'cover-slide';
+      const img = document.createElement('img');
+      img.src = src; img.loading = i < 4 ? 'eager' : 'lazy';
+      img.alt = 'Patricia’s Services cleaning work';
+      s.appendChild(img);
+      rail.appendChild(s);
+      return s;
+    });
+
+    let active = 0;
+
+    // Continuous scale/opacity tied to each slide's distance from centre — the buttery part.
+    function render(){
+      const vpRect = vp.getBoundingClientRect();
+      const mid = vpRect.left + vpRect.width / 2;
+      let best = Infinity, bestIdx = 0;
+      slides.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        const c = r.left + r.width / 2;
+        const d = Math.abs(c - mid);
+        const t = Math.min(d / (r.width * 1.15), 1);   // 0 at centre → 1 far away
+        const scale = 1 - t * 0.16;
+        s.style.transform = `scale(${scale.toFixed(3)})`;
+        s.style.opacity = (1 - t * 0.55).toFixed(3);
+        s.style.zIndex = String(Math.round((1 - t) * 100));
+        if (d < best){ best = d; bestIdx = i; }
+      });
+      active = bestIdx;
+      if (counter) counter.innerHTML = `<b>${String(active + 1).padStart(2,'0')}</b> &nbsp;/&nbsp; ${total}`;
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+
+    // Centre a slide by scrolling ONLY the horizontal container — never the page.
+    function goTo(i, smooth){
+      const idx = (i + total) % total;
+      const s = slides[idx];
+      const vpRect = vp.getBoundingClientRect();
+      const r = s.getBoundingClientRect();
+      const delta = (r.left + r.width / 2) - (vpRect.left + vpRect.width / 2);
+      vp.scrollTo({left: vp.scrollLeft + delta, behavior: smooth === false ? 'auto' : 'smooth'});
+    }
+    document.getElementById('coverPrev').addEventListener('click', () => { stopAuto(); goTo(active - 1); });
+    document.getElementById('coverNext').addEventListener('click', () => { stopAuto(); goTo(active + 1); });
+
+    // Gentle auto-advance — pauses on hover/interaction, resumes after a rest.
+    const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    let autoId = null, resumeId = null;
+    function tick(){ goTo(active + 1); }
+    function startAuto(){ if (!reduce && !autoId) autoId = setInterval(tick, 4200); }
+    function stopAuto(){ clearInterval(autoId); autoId = null; clearTimeout(resumeId);
+                         resumeId = setTimeout(startAuto, 7000); }
+    vp.addEventListener('mouseenter', () => { clearInterval(autoId); autoId = null; });
+    vp.addEventListener('mouseleave', () => { startAuto(); });
+    startAuto();
+
+    // Drag / swipe to scrub through the rail.
+    let dragging = false, startX = 0, startScroll = 0, moved = false;
+    function down(e){
+      dragging = true; moved = false;
+      startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      startScroll = vp.scrollLeft;
+      vp.style.scrollSnapType = 'none';
+      vp.style.scrollBehavior = 'auto';
+      slides.forEach(s => s.classList.add('grabbing'));
+      clearInterval(autoId); autoId = null;
+    }
+    function move(e){
+      if (!dragging) return;
+      const x = (e.touches ? e.touches[0].clientX : e.clientX);
+      const dx = x - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      vp.scrollLeft = startScroll - dx;
+      if (e.cancelable) e.preventDefault();
+    }
+    function up(){
+      if (!dragging) return;
+      dragging = false;
+      slides.forEach(s => s.classList.remove('grabbing'));
+      vp.style.scrollBehavior = 'smooth';
+      vp.style.scrollSnapType = 'x mandatory';
+      if (moved) goTo(active);     // settle onto the nearest slide
+      stopAuto();
+    }
+    vp.addEventListener('pointerdown', down);
+    window.addEventListener('pointermove', move, {passive:false});
+    window.addEventListener('pointerup', up);
+    vp.addEventListener('touchstart', down, {passive:false});
+    window.addEventListener('touchmove', move, {passive:false});
+    window.addEventListener('touchend', up);
+
+    // Start centred on the first slide (instant, container-only — no page movement).
+    window.addEventListener('load', () => goTo(0, false));
+  })();
+
   const nav = document.getElementById('nav');
   const menu = document.getElementById('menu');
   // Nav turns solid once you scroll past the hero
@@ -564,21 +818,34 @@
     e.preventDefault();
     const d = new FormData(form);
     const v = k => (d.get(k) || '').toString().trim();
+    const multi = k => d.getAll(k).map(s => s.toString().trim()).filter(Boolean).join(', ');
+    const name = [v('firstName'), v('lastName')].filter(Boolean).join(' ');
+    const address = [
+      v('address1'), v('address2'),
+      [v('city'), v('state'), v('zip')].filter(Boolean).join(' ')
+    ].filter(Boolean).join(', ');
+    // Only include lines the visitor actually filled in.
+    const line = (label, val) => val ? `${label}: ${val}\n` : '';
     const msg =
       `New quote request from the website:\n` +
-      `Name: ${v('name')}\n` +
-      `Phone: ${v('phone')}\n` +
-      `Email: ${v('email')}\n` +
-      `Service: ${v('service')}\n` +
-      `Home size: ${v('size')}\n` +
-      `Details: ${v('details')}`;
+      line('Name', name) +
+      line('Phone', v('phone')) +
+      line('Email', v('email')) +
+      line('Property Address', address) +
+      line('Type of Cleaning Service', multi('service')) +
+      line('Type of Property', multi('property')) +
+      line('Square footage', v('sqft')) +
+      line('Bedrooms & bathrooms', v('bedbath')) +
+      line('Special services', multi('special')) +
+      line('Property condition', v('condition')) +
+      line('Preferred cleaning time', multi('time'));
 
     if (isMobile) {
       window.location.href = `sms:${BIZ_PHONE}?&body=${encodeURIComponent(msg)}`;
       successMsg.textContent =
         "Your text is ready in Messages — just tap Send and it'll reach us at (808) 476-2343. We'll reply with a quote the same day.";
     } else {
-      const subject = `Free Quote Request — ${v('name') || 'Website'}`;
+      const subject = `Free Quote Request — ${name || 'Website'}`;
       window.location.href =
         `mailto:${BIZ_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
       successMsg.innerHTML =
